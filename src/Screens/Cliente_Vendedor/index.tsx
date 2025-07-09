@@ -7,7 +7,7 @@ import Vendedor from "../../Imagens/logo_vendedor.png";
 import folhaImage from "../../Imagens/folha.png";
 
 
-export default function MapAcai() {
+export default function Cliente_Vendedor() {
   return (
     <View>
 
