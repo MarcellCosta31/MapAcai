@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import  SplashScreen from './src/Screens/SplashScreen';
+import Cliente_Vendedor from './src/Screens/Cliente_Vendedor';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [showSplash, setShowSplash] = useState(true);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false); // após 2 segundos, mostra a outra tela
+    }, 2000);
+
+    return () => clearTimeout(timer); // limpa o timer se o componente desmontar
+  }, []);
+
+  return showSplash ? <SplashScreen /> : <Cliente_Vendedor />;
+}
